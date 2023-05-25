@@ -64,8 +64,7 @@ class LDAMLoss(nn.Module):
         output = torch.where(index, x_m, x)
         return F.cross_entropy(self.s*output, target, weight=self.weight)
 
-
-    class LMFLoss(nn.Module):
+class LMFLoss(nn.Module):
         def __init__(self,cls_num_list,weight,alpha=1,beta=1, gamma=2, max_m=0.5, s=30):
             super().__init__()
             self.focal_loss = FocalLoss(weight, gamma)
